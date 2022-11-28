@@ -1,0 +1,61 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+@{
+    ViewData["Title"] = "Editar Conta - Aissa Tecnologia";
+}
+
+@model ProjetoKanban.Models.Pessoa
+
+<header>
+    <img src="~/imagens/aissa-branco.svg" class="logo">
+    <button class="headerbutton">&#9776</button>
+    <ul>
+        <li><a class="pagina" asp-controller="Projetoes" asp-action="Index"><i class="bi bi-folder-fill"></i>PROJETOS</a></li>
+        <li><a class="pagina" asp-controller="Home" asp-action="Perfil"><i class="bi bi-person-fill"></i>PERFIL</a></li>
+        <li><a class="pagina-atv" asp-controller="Pessoas" asp-action="Edit" asp-route-id="@HttpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado")"><i class="bi bi-gear-fill"></i>CONTA</a></li>
+        <li><a class="pagina" href="#"><i class="bi bi-door-open-fill"></i>SAIR</a></li>
+    </ul>
+
+</header>
+<div class="container">
+    <main role="main" class="pb-3">
+        <div class="editarcontent">
+            <h5>Editar Foto de Perfil</h5>
+            <div class="editarimg">
+                <form>
+                    <div><img src="imagens/perfil.png" class="imgperfil"></div>
+                    <div class="editar1">
+                        <input class="uploadfile" asp-for="Foto" type="file" name="uploadimg" style="margin-left: 10px;">
+                        <button class="uploadbut" type="submit">Upload</button>
+                    </div>
+                </form>
+            </div>
+
+            <h5>Editar Informações</h5>
+            <div class="editarconta">
+                <form>
+                    <div class="campo-edit">
+                        <label for="nome">NOME</label>
+                        <input type="text" name="nome" asp-for="Nome">
+                    </div>
+                    <div class="campo-edit">
+                        <label for="email">EMAIL</label>
+                        <input type="text" name="email" asp-for="Email">
+                    </div>
+                    <div class="campo-edit">
+                        <label for="passwd">SENHA</label>
+                        <input type="password" name="passwd" asp-for="Senha">
+                    </div>
+                </form>
+                <div>
+                    <button class="save-alt" type="submit">Salvar Alterações</button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+</div>
+<script src="js/script.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+

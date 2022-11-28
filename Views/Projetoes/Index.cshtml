@@ -1,0 +1,32 @@
+﻿@model IEnumerable<ProjetoKanban.Models.Projeto>
+
+@{
+    ViewData["Title"] = "Projetos - Aissa Tecnologia";
+}
+<header>
+    <img src="~/imagens/aissa-branco.svg" class="logo">
+    <h4>Projetos</h4>
+    <div class="linksProjeto">
+        <ul>
+            <li><a asp-action="Create"><font color=white><i class="bi bi-plus-circle-fill"></i> Criar Novo Projeto</font></a></li>
+            <a asp-controller="Home" asp-action="Index"><font color=white><i class="bi bi-arrow-return-left"></i> Voltar</font></a>
+        </ul>
+    </div>
+</header>
+<div class="listaProjetos">
+    @foreach (var item in Model)
+    {
+        <div class="cardProject">
+            <div class="dadosCardP">
+                <div><h6>Projeto: @Html.DisplayFor(model => item.Nome)</h6></div>
+                <div class="opcoesProject">
+                    <ul>
+                        <li><a asp-action="Edit" asp-route-id="@item.Id" alt="Editar"><font color=#d65cb1><i class="bi bi-pencil-square"></i>Editar</font></a></li>
+                        <li><a asp-action="Details" asp-route-id="@item.Id" alt="Detalhes"><font color=#ff6f91><i class="bi bi-kanban-fill"></i>Detalhes</font></a></li>
+                        <li><a asp-action="Delete" asp-route-id="@item.Id" alt="Remover"><font color=#ffc75f><i class="bi bi-x-circle-fill"></i>Remover</font></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    }
+</div>

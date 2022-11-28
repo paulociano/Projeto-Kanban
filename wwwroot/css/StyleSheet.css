@@ -1,0 +1,705 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/fontawesome.min.css");
+
+a {
+    text-decoration: none;
+}
+
+.homecontainer {
+    background-color: #2c3540;
+}
+
+body {
+    scroll-behavior: smooth;
+    margin: 0px;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+    body * {
+        box-sizing: border-box;
+    }
+
+/*Menu Principal*/
+
+header {
+    padding: 5px 10px;
+    background: #2c3540;
+    display: flex;
+    justify-content: space-between;
+}
+
+    header ul {
+        align-items: center;
+        display: flex;
+        overflow: hidden;
+    }
+
+        header ul li {
+            list-style: none;
+            padding-top: 10px;
+            margin-right: 40px;
+            text-align: center;
+        }
+
+            header ul li a {
+                font-weight: 600;
+                text-decoration: none;
+            }
+
+                header ul li a i {
+                }
+
+.logo {
+    max-height: 75px;
+}
+
+.headerbutton {
+    font-size: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    background: transparent;
+    color: #fff;
+    border: none;
+    position: absolute;
+    right: 10px;
+    display: none;
+}
+
+.pagina {
+    color: #fff;
+}
+
+.pagina-atv {
+    color: #778899;
+}
+
+header ul li a:hover {
+    color: #778899;
+}
+
+/*Página Meus Projetos*/
+
+.nova-tarefa-container {
+    background: #d3d3d3;
+    border: none;
+    flex-direction: row;
+    height: 50px;
+    align-items: center;
+}
+
+    .nova-tarefa-container button {
+        margin-left: 10px;
+        width: 100px;
+        height: 30px;
+        align-items: center;
+    }
+
+    .nova-tarefa-container input {
+        margin-left: 10px;
+        height: 30px;
+        border-radius: 5px;
+        border: none;
+    }
+
+.content {
+    width: 100%;
+    height: 100%;
+}
+
+/*Página de Login*/
+
+.main-login {
+    width: 100vw;
+    height: 100vh;
+    background: #cccccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.right-login {
+    width: 50vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.right-login-image {
+    width: 40vw;
+}
+
+.left-login {
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-login {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px 35px;
+    background: #2c3540;
+    border-radius: 20px;
+    box-shadow: 0px 10px 40px #00000056;
+}
+
+    .card-login > h1 {
+        color: #ffffff;
+        font-weight: 800;
+        margin: 0;
+        justify-content: center;
+    }
+
+    .card-login > p {
+        color: #ffffff;
+        cursor: pointer;
+        text-decoration: underline;
+    }
+
+.textfield {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 10px 0px;
+}
+
+    .textfield > input {
+        width: 100%;
+        border: none;
+        border-radius: 10px;
+        padding: 15px;
+        background: #ffffff;
+        color: #2C3540;
+        font-size: 12pt;
+        box-shadow: 0px 10px 40px #00000056;
+        outline: none;
+        box-sizing: border-box;
+    }
+
+    .textfield > label {
+        color: #f0ffffde;
+        margin-bottom: 10px;
+    }
+
+    .textfield > input::placeholder {
+        color: #f0ffff94;
+    }
+
+.btn-login {
+    width: 100%;
+    padding: 16px 0px;
+    margin: 25px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: #ffffff;
+    box-sizing: border-box;
+    background-color: #304936;
+    cursor: pointer;
+}
+
+#content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+/*Página de Cadastro*/
+
+.main-cadastro {
+    width: 100vw;
+    height: 100vh;
+    background: #cccccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.right-cadastro {
+    width: 50vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.right-login-image {
+    width: 40vw;
+}
+
+.left-cadastro {
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-cadastro {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px 35px;
+    background: #2c3540;
+    border-radius: 20px;
+    box-shadow: 0px 10px 40px #00000056;
+}
+
+.form-cadastro {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px 35px;
+    border-radius: 30px;
+}
+
+    .form-cadastro > h2 {
+        color: #ffffff;
+        font-weight: 600;
+        margin: 0;
+        justify-content: center;
+    }
+
+.textfield {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 10px 0px;
+}
+
+    .textfield input {
+        width: 100%;
+        border: none;
+        border-radius: 10px;
+        padding: 15px;
+        background: #ffffff;
+        color: #2C3540;
+        font-size: 12pt;
+        box-shadow: 0px 5px 10px #00000056;
+        outline: #ffffff;
+        box-sizing: border-box;
+    }
+
+    .textfield label {
+        color: #ffffff;
+        margin-bottom: 5px;
+        margin-top: 10px;
+    }
+
+    .textfield input::placeholder {
+        color: #f0ffff94;
+    }
+
+.paineladmin {
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+.btn-cadastrar {
+    width: 300px;
+    padding: 16px 0px;
+    margin: 10px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: #ffffff;
+    box-sizing: border-box;
+    background-color: #304936;
+    cursor: pointer;
+}
+
+.middle {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+}
+
+.listaProjetos  {
+    display: flex;
+    justify-content: center;
+}
+
+.cardProject {
+    width: 250px;
+    height: 150px;
+    background-color: #222;
+    color: white;
+    border-radius: 10px 10px 0 0;
+    margin-right: 10px;
+    margin-top: 10px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.dadosCardP {
+    margin-top: 30px;
+    text-align: center;
+    justify-content: center;
+}
+
+.opcoesProject ul {
+    margin-right: 25px;
+    display: flex;
+    list-style: none;
+    text-decoration: none;
+    justify-content: center;
+}
+
+.opcoesProject ul li{
+    margin-right: 3px;
+}
+
+/*Quadro Kanban*/
+
+.kanban {
+    display: flex;
+    justify-content: center;
+    height: auto;
+    text-align: center;
+}
+
+    .kanban h5 {
+        justify-content: center;
+        border-radius: 5px 5px 0 0;
+        width: 180px;
+        color: #2c3540;
+        margin-left: 5px;
+        margin-top: 10px;
+    }
+
+.coluna {
+    justify-content: center;
+    border-radius: 10px 10px 0 0;
+    width: 180px;
+    background: #000;
+    margin-left: 5px;
+}
+
+#backlog {
+    background: #845ec2;
+}
+
+#design {
+    background: #d65cb1;
+}
+
+#desenvolvimento {
+    background: #ff6f91;
+}
+
+#testes {
+    background: #ffc75f;
+}
+
+#implantacao {
+    background: #008e9b;
+}
+
+#conclusao {
+    background: #008f7a;
+}
+
+.status {
+    margin-left: 50px;
+}
+
+.button {
+    border-radius: 10px;
+    background: #2c3540;
+    cursor: pointer;
+}
+
+.del-button {
+    background-color: #2c3540;
+    color: #fff;
+    height: 30px;
+    width: auto;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5px;
+}
+
+    .del-button:hover {
+        background-color: #fa7070;
+    }
+
+.add-button {
+    background-color: #2c3540;
+    height: 2.8rem;
+    width: auto;
+    margin-top: 0.6rem;
+    border: 0px;
+    color: #fff;
+}
+
+    .add-button:hover {
+        background-color: #304936;
+    }
+
+.tarefa {
+    display: flex;
+    margin: 10px;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    height: auto;
+    min-height: 50px;
+    cursor: move;
+    text-align: center;
+    border-radius: 5px;
+    border-bottom: 2px solid black;
+    vertical-align: middle;
+    width: 160px;
+}
+
+.dragging {
+    opacity: 0.5;
+}
+
+/* Página de Perfil */
+
+.fonts {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.social-list {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    padding: 0;
+    align-items: center;
+}
+
+    .social-list li {
+        padding: 10px;
+        color: #2c3540;
+        font-size: 19px;
+        cursor: pointer;
+        height: 40px;
+        width: 40px;
+    }
+
+.buttons button:nth-child(1) {
+    border: 1px solid #2c3540 !important;
+    color: #8E24AA;
+    height: 40px;
+}
+
+.cardperfil {
+    padding-top: 30px;
+    align-items: center;
+}
+
+.logo {
+}
+
+.imgperfil {
+    max-height: 100px;
+}
+
+/*Página Conta*/
+
+.editarimg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.editarconta {
+    display: inline;
+}
+
+.editarcontent {
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    text-align: center;
+}
+
+.uploadbut {
+    background: #2c3540;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.uploadfile {
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px solid #2c3540;
+}
+
+.editarconta label {
+    font-weight: 500;
+}
+
+.editarconta input {
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px solid #2c3540;
+    margin-top: 20px;
+}
+
+.campo-edit {
+    margin-bottom: 10px;
+}
+
+.save-alt {
+    background: #2c3540;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.cabecalhoProjeto {
+    color: white;
+    margin-top: 25px
+}
+
+.linksProjeto {
+    margin-right: 10px;
+    margin-top: 25px;
+}
+
+.formularioNovoProj {
+    justify-content: center;
+    text-align: center;
+    margin-top: 30px;
+}
+
+
+/*MODAL*/
+
+.modal-overlay {
+    justify-content:center;
+    background-color: rgba(0, 0, 0, 0.342);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    overflow-y: auto;
+}
+
+.modal {
+    position: relative;
+    margin: 1rem;
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    min-height: 500px;
+    background-color: white;
+    border-radius: 11px;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.modal-header {
+    background-color: #304936;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+.modal-content {
+    padding: 0.5rem 1rem;
+    flex: 1;
+}
+
+.modalDescricaoEditar {
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.buttonSaveModal {
+    border-radius: 20px;
+    background: #2c3540;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.descricaoTarefaModal {
+    min-height:200px;
+}
+
+.buttonSalvarKanban {
+    border-radius: 10px;
+    background: #304936;
+    cursor: pointer;
+    margin-left: 20px;
+    width: 100px;
+}
+
+@keyframes scale-in {
+    0% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+    }
+
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+.modal {
+    -webkit-animation: scale-in 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940);
+    animation: scale-in 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940);
+}
+
+/*Responsividade*/
+
+@media only screen and (max-width: 767px) {
+    header {
+        justify-content: center;
+        flex-direction: column;
+    }
+
+        header ul {
+            flex-direction: column;
+            height: 0;
+        }
+
+    .headerbutton {
+        display: flex;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .modal {
+        min-height: 100vh;
+        width: 100vw;
+        margin: 0;
+        border-radius: 0;
+    }
+}
+

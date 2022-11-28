@@ -1,0 +1,96 @@
+﻿@model ProjetoKanban.Models.Projeto
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<header>
+    <img src="~/imagens/aissa-branco.svg" class="logo">
+    <button class="headerbutton">&#9776</button>
+    <h4 class="cabecalhoProjeto">Projeto @Html.DisplayFor(model => model.Nome)</h4>   
+    <div class="linksProjeto">
+        <a asp-action="Edit" asp-route-id="@Model.Id"><font color=white><i class="bi bi-pencil-fill"></i>Editar</font></a> |
+        <a asp-action="Index"><font color=white><i class="bi bi-arrow-return-left"></i>Voltar</font></a>
+    </div>
+
+</header>
+<div class="container">
+    <main role="main" class="pb-3">
+        <section>
+
+            <div class="modal-overlay" id="overlay">
+                <div class="modal" id="modal">
+                    <div class="modal-header">
+                        Nome da Tarefa
+                    </div>
+                    <div class="modal-content">
+                        <div class="modalDescricaoEditar">
+                            <label>Descrição</label>
+                            <button class="buttonSaveModal"><font color=white><i class="bi bi-pencil-fill"></i> Editar </font></button>
+                            <button class="buttonSaveModal"><font color=white><i class="bi bi-cloud-arrow-up-fill"></i> Salvar </font></button>
+                        </div>
+                        <input class="descricaoTarefaModal" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="nova-tarefa-container">
+                <input type="text" maxlength="20" id="tarefaText" placeholder="Nova Tarefa.." onkeydown="if (event.keyCode == 13) document.getElementById('add').click()">
+                <button id="add" class="button add-button" onclick="addTarefa()">Adicionar</button> | 
+                <button id="salvarEstadoProjeto" class="buttonSalvarKanban" onclick="salvarAlteracoes()"><font color=white><i class="bi bi-cloud-arrow-up-fill"></i>Atualizar</font></button>
+            </div>
+
+            <div class="projeto row">
+
+                <div class="kanban">
+                    <h5>Backlog</h5>
+                    <h5>Design</h5>
+                    <h5>Desenvolvimento</h5>
+                    <h5>Testes</h5>
+                    <h5>Implantação</h5>
+                    <h5>Conclusão</h5>
+                </div>
+                <div id="tarefasProjeto" class="kanban">
+                    <div id="backlog" class="coluna">
+                    </div>
+                    <div id="design" class="coluna">
+                    </div>
+                    <div id="desenvolvimento" class="coluna">
+                    </div>
+                    <div id="testes" class="coluna">
+                    </div>
+                    <div id="implantacao" class="coluna">
+                    </div>
+                    <div id="conclusao" class="coluna">
+                        <button class="button del-button" onclick="limparConclusao()"><i class="bi bi-trash3-fill"></i></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+
+<div id="root"></div>
+<script src="js/script.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+
+
+<script type="text/javascript">
+    function salvarAlteracoes() {
+
+        var projetoHtml = document.getElementById("tarefasProjeto").innerHTML;
+        var projetoId = @Html.DisplayFor(model => model.Id);
+
+        $.ajax({
+            method: "POST",
+            url: "../EditState",
+            data: {conteudo:projetoHtml, id:projetoId},
+            success: (e) => {
+                alert('As alterações foram salvas com sucesso!')
+            },
+            error: (e) => {
+               alert('Não foi possível salvar as alterações!')
+            }
+        })
+    };
+</script>

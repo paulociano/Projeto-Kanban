@@ -1,0 +1,33 @@
+﻿@model ProjetoKanban.Models.Projeto
+
+@{
+    ViewData["Title"] = "Novo Projeto - Aissa Tecnologia";
+}
+
+<header>
+    <img src="~/imagens/aissa-branco.svg" class="logo">
+    <h4 class="cabecalhoProjeto">Criar Novo Projeto</h4>
+    <div class="linksProjeto">
+        <a asp-action="Index"><font color=white><i class="bi bi-arrow-return-left"></i>Voltar</font></a>
+    </div>
+</header>
+
+<div class="formularioNovoProj row">
+    <div>
+        <form class="novoProjeto" asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Nome" class="control-label"></label>
+                <input asp-for="Nome" class="form-control" />
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+            <div>
+                <button class="button add-button" type="submit"> Criar </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

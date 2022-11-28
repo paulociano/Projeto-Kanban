@@ -1,0 +1,38 @@
+﻿@model ProjetoKanban.Models.Pessoa
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/css/StyleSheet.css" rel="stylesheet" />
+    <title>LOGIN - AISSA TECNOLOGIA</title>
+</head>
+<body>
+    <div class="main-login">
+        <div class="left-login">
+            <form asp-controller="Login" asp-action="Logar" method="post" class="card-login">
+                <h1>LOGIN</h1>
+                <div class="textfield">
+                    <label asp-for="Email">Usuário</label>
+                    <input asp-for="Email" type="text" placeholder="Usuário">
+                    <div style="color: red">@Html.ValidationMessageFor(x => x.Email)</div>
+                </div>
+                <div class="textfield">
+                    <label asp-for="Senha" for="senha">Senha</label>
+                    <input asp-for="Senha" type="password" name="senha" placeholder="Senha">
+                    <div style="color: red">@Html.ValidationMessageFor(x => x.Senha)</div>
+                </div>
+                <button type="submit" class="btn-login">Entrar</button>
+                <p><a class="newuser" href="/Pessoas/Create"><font color=white>Novo usuário? Cadastre-se aqui!</font></a></p>
+            </form>
+        </div>
+        <div class="right-login">
+            <img src="~/imagens/logo-aissa.png"  class="right-login-image" alt="Logo da empresa Aissa Tecnologia composto por uma letra A estilizada em azul e verde escuro, envolta por um hexágono como fundo branco e borda azul escura. Na parte inferior, está escrito Aissa Tecnologia em letras azuis.">
+        </div>/>
+    </div>
+</body>
+</html>

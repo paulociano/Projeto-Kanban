@@ -1,0 +1,52 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+@{
+    ViewData["Title"] = "Aissa Tecnologia - Perfil";
+}
+
+<header>
+    <img src="~/imagens/aissa-branco.svg" class="logo">
+    <button class="headerbutton">&#9776</button>
+    <ul>
+        <li><a class="pagina" asp-controller="Projetoes" asp-action="Index"><i class="bi bi-folder-fill"></i>PROJETOS</a></li>
+        <li><a class="pagina-atv" asp-controller="Home" asp-action="Perfil"><i class="bi bi-person-fill"></i>PERFIL</a></li>
+        <li><a class="pagina" asp-controller="Home" asp-action="Conta"><i class="bi bi-gear-fill"></i>CONTA</a></li>
+        <li><a class="pagina" href="#"><i class="bi bi-door-open-fill"></i>SAIR</a></li>
+    </ul>
+
+</header>
+<div class="container">
+    <main role="main" class="pb-3">
+        <div class="meuperfil d-flex justify-content-center">
+
+            <div class="cardperfil">
+
+                <div class="text-center">
+                    <img src="~/imagens/perfil.png" width="100" class="rounded-circle">
+                </div>
+
+                <div class="text-center mt-3">
+                    <h3 class="mt-2 mb-0">@HttpContextAccessor.HttpContext.Session.GetString("NomeUsuarioLogado")</h3>
+                    <span>@HttpContextAccessor.HttpContext.Session.GetString("CargoUsuarioLogado")</span>
+
+                    <div class="px-4 mt-1">
+                        <p class="fonts">@HttpContextAccessor.HttpContext.Session.GetString("BioUsuarioLogado")</p>
+                    </div>
+
+                    <ul class="social-list">
+                        <li><i class="bi bi-github" onclick="@HttpContextAccessor.HttpContext.Session.GetString("GitUsuarioLogado")"></i></li>
+                    </ul>
+
+                    <div class="buttons">
+                        <button class="btn btn-outline-primary px-4" onclick="mailto:@HttpContextAccessor.HttpContext.Session.GetString("EmailUsuarioLogado")">@HttpContextAccessor.HttpContext.Session.GetString("EmailUsuarioLogado")</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<div id="root"></div>
+<script src="js/script.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>

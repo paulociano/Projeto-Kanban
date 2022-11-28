@@ -1,0 +1,75 @@
+﻿@model IEnumerable<ProjetoKanban.Models.Pessoa>
+
+@{
+    ViewData["Title"] = "Pessoas - Aissa Tecnologia";
+}
+
+<header class="paineladmin">
+    <img src="~/imagens/aissa-branco.svg" class="logo">
+    <ul>
+        <li><h4 class="pagina">CADASTRO DE PESSOAS</h4></li>
+    </ul>
+        
+</header>
+
+<button class="btn-novo"><a asp-action="Create">Cadastrar Novo</a></button>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Senha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cargo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Foto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Github)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Senha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cargo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Foto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Github)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Remover</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
