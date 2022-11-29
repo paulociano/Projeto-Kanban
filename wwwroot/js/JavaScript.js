@@ -1,9 +1,8 @@
 ﻿
 function addTarefa() {
-    var inputTarefa = document.getElementById("tarefaText").value;
-    var tarefaTitle = document.getElementById("tarefaText").value;
+    var tarefaNome = document.getElementById("tarefaText").value;
     document.getElementById("backlog").innerHTML +=
-        "<div class='tarefa' draggable='true' onclick='abrirModal()'>" + inputTarefa + "</div>";
+        "<div class='tarefa' draggable='true' onclick='abrirModal()'>" + tarefaNome + "</div>";
     document.getElementById("tarefaText").value = "";
 }
 

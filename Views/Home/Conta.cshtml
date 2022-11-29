@@ -13,7 +13,7 @@
     <ul>
         <li><a class="pagina" asp-controller="Projetoes" asp-action="Index"><i class="bi bi-folder-fill"></i>PROJETOS</a></li>
         <li><a class="pagina" asp-controller="Home" asp-action="Perfil"><i class="bi bi-person-fill"></i>PERFIL</a></li>
-        <li><a class="pagina-atv" asp-controller="Pessoas" asp-action="Edit" asp-route-id="@HttpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado")"><i class="bi bi-gear-fill"></i>CONTA</a></li>
+        <li><a class="pagina-atv" asp-controller="Pessoas" asp-action="EditConta" asp-route-id="@HttpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado")"><i class="bi bi-gear-fill"></i>CONTA</a></li>
         <li><a class="pagina" href="#"><i class="bi bi-door-open-fill"></i>SAIR</a></li>
     </ul>
 

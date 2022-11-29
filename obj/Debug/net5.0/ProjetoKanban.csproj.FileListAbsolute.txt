@@ -653,3 +653,4 @@ C:\Users\WIN10\Desktop\kanban\Projeto-Kanban\obj\Debug\net5.0\ProjetoKanban.dll
 C:\Users\WIN10\Desktop\kanban\Projeto-Kanban\obj\Debug\net5.0\ref\ProjetoKanban.dll
 C:\Users\WIN10\Desktop\kanban\Projeto-Kanban\obj\Debug\net5.0\ProjetoKanban.pdb
 C:\Users\WIN10\Desktop\kanban\Projeto-Kanban\obj\Debug\net5.0\ProjetoKanban.genruntimeconfig.cache
+C:\Users\WIN10\Desktop\kanban\Projeto-Kanban\obj\Debug\net5.0\Razor\Views\Pessoas\EditConta.cshtml.g.cs

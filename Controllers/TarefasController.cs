@@ -43,27 +43,24 @@ namespace ProjetoKanban.Controllers
             return View(tarefa);
         }
 
-        // GET: Tarefas/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
+
 
         // POST: Tarefas/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nome,Descricao,Status")] Tarefa tarefa)
+        public async Task<IActionResult> Create(string nome, [Bind("Id,Nome,Descricao,Status")] Tarefa tarefa)
         {
             if (ModelState.IsValid)
             {
+                nome = tarefa.Nome;
                 _context.Add(tarefa);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                
             }
-            return View(); 
+            return StatusCode(200);
         }
+
 
         // GET: Tarefas/Edit/5
         public async Task<IActionResult> Edit(int? id)

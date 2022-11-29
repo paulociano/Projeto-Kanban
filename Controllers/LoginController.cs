@@ -93,6 +93,12 @@ namespace ProjetoKanban.Controllers
                 return View("Index");
             }
         }
+
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index", "Login");
+        }
     }
 }
 

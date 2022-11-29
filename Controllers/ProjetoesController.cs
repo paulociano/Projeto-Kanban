@@ -154,11 +154,9 @@ namespace ProjetoKanban.Controllers
         //[ValidateAntiForgeryToken]
         public async Task<IActionResult> EditState(int id, string conteudo)
         {
-            Console.WriteLine(id);
             Projeto projeto = await _context.Projetos.FindAsync(id);
             if (projeto == null)
             {
-                Console.WriteLine(id);
                 return NotFound();
             }
 

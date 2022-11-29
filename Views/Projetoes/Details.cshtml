@@ -18,6 +18,7 @@
     <main role="main" class="pb-3">
         <section>
 
+            @*Modal*@
             <div class="modal-overlay" id="overlay">
                 <div class="modal" id="modal">
                     <div class="modal-header">
@@ -34,13 +35,15 @@
                 </div>
             </div>
 
+            @*Barra de Tarefas*@
             <div class="nova-tarefa-container">
-                <input type="text" maxlength="20" id="tarefaText" placeholder="Nova Tarefa.." onkeydown="if (event.keyCode == 13) document.getElementById('add').click()">
+                <input type="text" maxlength="20" id="tarefaText" placeholder="Nova Tarefa.." onkeydown="if (event.keyCode == 13) document.getElementById('add').click()"/>
                 <button id="add" class="button add-button" onclick="addTarefa()">Adicionar</button> |
                 <button id="salvarEstadoProjeto" class="buttonSalvarKanban" onclick="salvarAlteracoes()"><font color=white><i class="bi bi-cloud-arrow-up-fill"></i>Salvar</font></button>
                
             </div>
 
+            @*Quadro Kanban*@
             <div class="projeto row">
 
                 <div class="kanban">
@@ -100,8 +103,9 @@
         var stateTwo = stateOne.replace(/&lt;/g, "<");
         var stateThree = stateTwo.replace(/&gt;/g, ">");
         var stateFour = stateThree.replace(/&quot;/g, "'");
-        console.log(stateFour);
-        document.getElementById("tarefasProjeto").innerHTML = stateFour;
+        if (stateFour !== "") {
+            document.getElementById("tarefasProjeto").innerHTML = stateFour;
+        }
 
         /*Arrastar e Soltar Tarefas no Kanban*/
         const colunas = document.querySelectorAll(".coluna");
