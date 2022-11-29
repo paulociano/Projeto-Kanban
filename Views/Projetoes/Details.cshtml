@@ -37,7 +37,8 @@
             <div class="nova-tarefa-container">
                 <input type="text" maxlength="20" id="tarefaText" placeholder="Nova Tarefa.." onkeydown="if (event.keyCode == 13) document.getElementById('add').click()">
                 <button id="add" class="button add-button" onclick="addTarefa()">Adicionar</button> | 
-                <button id="salvarEstadoProjeto" class="buttonSalvarKanban" onclick="salvarAlteracoes()"><font color=white><i class="bi bi-cloud-arrow-up-fill"></i>Atualizar</font></button>
+                <button id="salvarEstadoProjeto" class="buttonSalvarKanban" onclick="salvarAlteracoes()"><font color=white><i class="bi bi-cloud-arrow-up-fill"></i>Salvar</font></button>
+                <button id="carregarEstadoProjeto" class="buttonSalvarKanban" onclick="carregarEstado()"><font color=white><i class="bi bi-cloud-arrow-down-fill"></i>Carregar</font></button>
             </div>
 
             <div class="projeto row">
@@ -71,26 +72,37 @@
 </div>
 
 <div id="root"></div>
-<script src="js/script.js"></script>
-<script src="js/bootstrap.bundle.min.js"></script>
-
-
+<script src="~/js/JavaScript.js"></script>
 <script type="text/javascript">
+
     function salvarAlteracoes() {
 
-        var projetoHtml = document.getElementById("tarefasProjeto").innerHTML;
+        var projetoHtml = (document.getElementById("tarefasProjeto").innerHTML);
         var projetoId = @Html.DisplayFor(model => model.Id);
 
         $.ajax({
             method: "POST",
-            url: "../EditState",
-            data: {conteudo:projetoHtml, id:projetoId},
+            url: "/Projetoes/EditState",
+            data: { conteudo: projetoHtml, id: projetoId },
             success: (e) => {
                 alert('As alterações foram salvas com sucesso!')
             },
             error: (e) => {
-               alert('Não foi possível salvar as alterações!')
+                alert('Não foi possível salvar as alterações!')
             }
-        })
-    };
+        });
+    }
+
+    function carregarEstado() {
+        document.getElementById(tarefasProjeto).innerHTML = @Html.DisplayFor(model => model.StateConteudo);
+    }
+
+
+    @*$('#carregarEstadoProjeto').click(function() {
+        let parser = new DOMParser();
+        let estadoProjeto = @Html.DisplayFor(model => model.StateConteudo);
+        let doc = parser.parseFromString(estadoProjeto, "text/html");
+
+    })*@
+
 </script>
