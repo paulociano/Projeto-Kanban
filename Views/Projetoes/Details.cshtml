@@ -72,12 +72,11 @@
 </div>
 
 <div id="root"></div>
-<script src="~/js/JavaScript.js"></script>
-<script type="text/javascript">
+<script>
 
     function salvarAlteracoes() {
 
-        var projetoHtml = (document.getElementById("tarefasProjeto").innerHTML);
+        var projetoHtml = document.getElementById("tarefasProjeto").innerHTML;
         var projetoId = @Html.DisplayFor(model => model.Id);
 
         $.ajax({
@@ -94,15 +93,7 @@
     }
 
     function carregarEstado() {
-        document.getElementById(tarefasProjeto).innerHTML = @Html.DisplayFor(model => model.StateConteudo);
-    }
-
-
-    @*$('#carregarEstadoProjeto').click(function() {
-        let parser = new DOMParser();
-        let estadoProjeto = @Html.DisplayFor(model => model.StateConteudo);
-        let doc = parser.parseFromString(estadoProjeto, "text/html");
-
-    })*@
+        document.getElementById("tarefasProjeto").innerHTML = @Html.DisplayFor(model => model.StateConteudo);
+}
 
 </script>
