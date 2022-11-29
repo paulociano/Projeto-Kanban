@@ -1,18 +1,15 @@
 ﻿function addTarefa() {
 
-    var chaveInt = Date.now();
-    var chave = chaveInt.toString();
-    console.log(chave);
-
     var tarefaNome = document.getElementById("tarefaText").value;
-
     var backlog = document.getElementById("backlog");
-
     backlog.innerHTML +=
         "<div class='tarefa' draggable='true' onclick='abrirModal()'>" + tarefaNome + "</div>";
     document.getElementById("tarefaText").value = "";
-
     var ultimaTarefa = backlog.lastElementChild;
+
+    var chaveInt = Date.now();
+    var chave = chaveInt.toString();
+    console.log(chave);
     ultimaTarefa.className += " " + chave;
 
     $.ajax({
@@ -27,13 +24,6 @@
         }
     });
 }
-
-//function addTarefa() {
-//    var tarefaNome = document.getElementById("tarefaText").value;
-//    document.getElementById("backlog").innerHTML +=
-//        "<div class='tarefa' draggable='true' onclick='abrirModal()'>" + tarefaNome + "</div>";
-//    document.getElementById("tarefaText").value = "";
-//}
 
 function limparConclusao() {
     document.getElementById("conclusao").innerHTML =
