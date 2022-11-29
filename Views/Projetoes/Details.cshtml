@@ -7,7 +7,7 @@
 <header>
     <img src="~/imagens/aissa-branco.svg" class="logo">
     <button class="headerbutton">&#9776</button>
-    <h4 class="cabecalhoProjeto">Projeto @Html.DisplayFor(model => model.Nome)</h4>   
+    <h4 class="cabecalhoProjeto">Projeto @Html.DisplayFor(model => model.Nome)</h4>
     <div class="linksProjeto">
         <a asp-action="Edit" asp-route-id="@Model.Id"><font color=white><i class="bi bi-pencil-fill"></i>Editar</font></a> |
         <a asp-action="Index"><font color=white><i class="bi bi-arrow-return-left"></i>Voltar</font></a>
@@ -36,9 +36,9 @@
 
             <div class="nova-tarefa-container">
                 <input type="text" maxlength="20" id="tarefaText" placeholder="Nova Tarefa.." onkeydown="if (event.keyCode == 13) document.getElementById('add').click()">
-                <button id="add" class="button add-button" onclick="addTarefa()">Adicionar</button> | 
+                <button id="add" class="button add-button" onclick="addTarefa()">Adicionar</button> |
                 <button id="salvarEstadoProjeto" class="buttonSalvarKanban" onclick="salvarAlteracoes()"><font color=white><i class="bi bi-cloud-arrow-up-fill"></i>Salvar</font></button>
-                <button id="carregarEstadoProjeto" class="buttonSalvarKanban" onclick="carregarEstado()"><font color=white><i class="bi bi-cloud-arrow-down-fill"></i>Carregar</font></button>
+               
             </div>
 
             <div class="projeto row">
@@ -72,8 +72,10 @@
 </div>
 
 <div id="root"></div>
+<script src="~/js/JavaScript.js"></script>
 <script>
 
+    /*Salvar alterações de estado do quadro*/
     function salvarAlteracoes() {
 
         var projetoHtml = document.getElementById("tarefasProjeto").innerHTML;
@@ -92,8 +94,49 @@
         });
     }
 
-    function carregarEstado() {
-        document.getElementById("tarefasProjeto").innerHTML = @Html.DisplayFor(model => model.StateConteudo);
+    /*Carregar primeiro ou último estado do quadro que foi salvo*/
+    window.onload = function carregarEstado() {
+        var stateOne = "@Html.DisplayFor(model => model.StateConteudo)".replace(/&#xA;/g, "");
+        var stateTwo = stateOne.replace(/&lt;/g, "<");
+        var stateThree = stateTwo.replace(/&gt;/g, ">");
+        var stateFour = stateThree.replace(/&quot;/g, "'");
+        console.log(stateFour);
+        document.getElementById("tarefasProjeto").innerHTML = stateFour;
+
+        /*Arrastar e Soltar Tarefas no Kanban*/
+        const colunas = document.querySelectorAll(".coluna");
+
+        document.addEventListener("dragstart", (e) => {
+            e.target.classList.add("dragging");
+        });
+
+        document.addEventListener("dragend", (e) => {
+            e.target.classList.remove("dragging");
+        });
+
+        colunas.forEach((tarefa) => {
+            tarefa.addEventListener("dragover", (e) => {
+                const dragging = document.querySelector(".dragging");
+                const applyAfter = getNewPosition(tarefa, e.clientY);
+
+                if (applyAfter) {
+                    applyAfter.insertAdjacentElement("afterend", dragging);
+                } else {
+                    tarefa.prepend(dragging);
+                }
+            });
+        });
+
+        function getNewPosition(coluna, posY) {
+            const cards = coluna.querySelectorAll(".tarefa:not(.dragging)");
+            let result;
+            for (let refer_card of cards) {
+                const box = refer_card.getBoundingClientRect();
+                const boxCenterY = box.y + box.height / 2;
+                if (posY >= boxCenterY) result = refer_card;
+            }
+            return result;
+        }
 }
 
 </script>

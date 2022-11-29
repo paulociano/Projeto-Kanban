@@ -8999,11 +8999,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\WIN10\\Desktop\\Nova pasta\\projetointer\\ProjetoKanban.csproj",
+      "projectUniqueName": "C:\\Users\\WIN10\\Desktop\\kanban\\Projeto-Kanban\\ProjetoKanban.csproj",
       "projectName": "ProjetoKanban",
-      "projectPath": "C:\\Users\\WIN10\\Desktop\\Nova pasta\\projetointer\\ProjetoKanban.csproj",
+      "projectPath": "C:\\Users\\WIN10\\Desktop\\kanban\\Projeto-Kanban\\ProjetoKanban.csproj",
       "packagesPath": "C:\\Users\\WIN10\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\WIN10\\Desktop\\Nova pasta\\projetointer\\obj\\",
+      "outputPath": "C:\\Users\\WIN10\\Desktop\\kanban\\Projeto-Kanban\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
