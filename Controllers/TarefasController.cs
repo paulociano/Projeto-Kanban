@@ -49,8 +49,8 @@ namespace ProjetoKanban.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(string nome, string codigodate, [Bind("Id,Nome,Descricao,Status,Chave")] Tarefa tarefa)
         {
-            nome = tarefa.Nome;
-            codigodate = tarefa.Chave;
+            tarefa.Nome = nome;
+            tarefa.Chave = codigodate;
             Console.WriteLine(codigodate);
             _context.Add(tarefa);
             await _context.SaveChangesAsync();

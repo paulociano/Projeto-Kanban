@@ -164,7 +164,7 @@ namespace ProjetoKanban.Controllers
                     
                 }
             }
-            return Json(resultado);
+            return RedirectToAction("EditConta", "Pessoas");
         }
 
         // GET: Pessoas/Delete/5

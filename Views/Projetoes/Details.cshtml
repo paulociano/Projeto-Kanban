@@ -22,7 +22,7 @@
             <div class="modal-overlay" id="overlay">
                 <div class="modal" id="modal">
                     <div class="modal-header">
-                        Nome da Tarefa
+                        
                     </div>
                     <div class="modal-content">
                         <div class="modalDescricaoEditar">
@@ -82,12 +82,12 @@
     function salvarAlteracoes() {
 
         var projetoHtml = document.getElementById("tarefasProjeto").innerHTML;
-        var projetoId = @Html.DisplayFor(model => model.Id);
+        var projetoId = "@Html.DisplayFor(model => model.Id)";
 
         $.ajax({
             method: "POST",
             url: "/Projetoes/EditState",
-            data: { conteudo: projetoHtml, id: projetoId },
+            data: { conteudo: projetoHtml, id:projetoId },
             success: (e) => {
                 alert('As alterações foram salvas com sucesso!')
             },
@@ -108,7 +108,7 @@
         }
 
         /*Arrastar e Soltar Tarefas no Kanban*/
-        const colunas = document.querySelectorAll(".coluna");
+        const colunas2 = document.querySelectorAll(".coluna");
 
         document.addEventListener("dragstart", (e) => {
             e.target.classList.add("dragging");
@@ -118,7 +118,7 @@
             e.target.classList.remove("dragging");
         });
 
-        colunas.forEach((tarefa) => {
+        colunas2.forEach((tarefa) => {
             tarefa.addEventListener("dragover", (e) => {
                 const dragging = document.querySelector(".dragging");
                 const applyAfter = getNewPosition(tarefa, e.clientY);
@@ -141,6 +141,7 @@
             }
             return result;
         }
-}
+    }
+
 
 </script>

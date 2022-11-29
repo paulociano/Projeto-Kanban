@@ -10,7 +10,7 @@
     var chaveInt = Date.now();
     var chave = chaveInt.toString();
     console.log(chave);
-    ultimaTarefa.className += " " + chave;
+    ultimaTarefa.id = chave;
 
     $.ajax({
         method: "POST",
@@ -80,7 +80,7 @@ const handleClickOutside = (event) => {
 const abrirModal = () => {
     let overlay = document.getElementById("overlay");
     let modal = document.getElementById("modal");
-    overlay.style.display = 'flex'
-    modal.style.display = 'flex'
+    overlay.style.display = 'flex';
+    modal.style.display = 'flex';
     setTimeout(() => { document.addEventListener('click', handleClickOutside, false) }, 200);
 }
