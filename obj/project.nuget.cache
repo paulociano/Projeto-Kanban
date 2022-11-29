@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "iSop5aziAN2pSpECXmLSVUDVo8VknSSmee5IXOo6epu+FKNnnoJ5TvOmVKbRWZMar3AtwtAJIHAQ/aYnLfbLCQ==",
+  "dgSpecHash": "qcqlXKmoe518z87a54YraSVyNzWq7TN01G3cqTTL50e4FxKWgLCx/CZwBKdP1NRFmynyG7M2fUsSy98AOdw6tg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\WIN10\\Desktop\\Nova pasta\\projetokanban\\ProjetoKanban.csproj",
+  "projectFilePath": "C:\\Users\\WIN10\\Desktop\\Nova pasta\\projetointer\\ProjetoKanban.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\WIN10\\.nuget\\packages\\castle.core\\4.4.1\\castle.core.4.4.1.nupkg.sha512",
     "C:\\Users\\WIN10\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",

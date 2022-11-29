@@ -1,4 +1,7 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+@{
     ViewData["Title"] = "Aissa Tecnologia - Projetos";
 }
 
@@ -8,13 +11,13 @@
     <ul>
         <li><a class="pagina" asp-controller="Projetoes" asp-action="Index"><i class="bi bi-folder-fill"></i>PROJETOS</a></li>
         <li><a class="pagina" asp-controller="Home" asp-action="Perfil"><i class="bi bi-person-fill"></i>PERFIL</a></li>
-        <li><a class="pagina" asp-controller="Home" asp-action="Conta"><i class="bi bi-gear-fill"></i>CONTA</a></li>
+        <li><a class="pagina" asp-controller="Pessoas" asp-action="Edit" asp-route-id="@HttpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado")"><i class="bi bi-gear-fill"></i>CONTA</a></li>
         <li><a class="pagina" href="#"><i class="bi bi-door-open-fill"></i>SAIR</a></li>
     </ul>
 
 </header>
 <div class="homecontainer">
-    
+
 </div>
 
 <div id="root"></div>

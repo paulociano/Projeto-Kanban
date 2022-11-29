@@ -1,12 +1,9 @@
-﻿var listTarefas = [];
-
+﻿
 function addTarefa() {
     var inputTarefa = document.getElementById("tarefaText").value;
     var tarefaTitle = document.getElementById("tarefaText").value;
     document.getElementById("backlog").innerHTML +=
         "<div class='tarefa' draggable='true' onclick='abrirModal()'>" + inputTarefa + "</div>";
-    listTarefas.push(inputTarefa);
-    console.log(listTarefas);
     document.getElementById("tarefaText").value = "";
 }
 
