@@ -43,24 +43,19 @@ namespace ProjetoKanban.Controllers
             return View(tarefa);
         }
 
-
-
         // POST: Tarefas/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public async Task<IActionResult> Create(string nome, [Bind("Id,Nome,Descricao,Status")] Tarefa tarefa)
+        public async Task<IActionResult> Create(string nome, string codigodate, [Bind("Id,Nome,Descricao,Status,Chave")] Tarefa tarefa)
         {
-            if (ModelState.IsValid)
-            {
-                nome = tarefa.Nome;
-                _context.Add(tarefa);
-                await _context.SaveChangesAsync();
-                
-            }
+            nome = tarefa.Nome;
+            codigodate = tarefa.Chave;
+            Console.WriteLine(codigodate);
+            _context.Add(tarefa);
+            await _context.SaveChangesAsync();
             return StatusCode(200);
         }
-
 
         // GET: Tarefas/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -83,7 +78,7 @@ namespace ProjetoKanban.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Descricao,Status")] Tarefa tarefa)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Descricao,Status,Chave")] Tarefa tarefa)
         {
             if (id != tarefa.Id)
             {

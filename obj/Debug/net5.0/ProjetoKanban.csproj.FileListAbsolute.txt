@@ -637,11 +637,6 @@ C:\Users\WIN10\Desktop\kanban\Projeto-Kanban\obj\Debug\net5.0\Razor\Views\Projet
 C:\Users\WIN10\Desktop\kanban\Projeto-Kanban\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\WIN10\Desktop\kanban\Projeto-Kanban\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\WIN10\Desktop\kanban\Projeto-Kanban\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
-C:\Users\WIN10\Desktop\kanban\Projeto-Kanban\obj\Debug\net5.0\Razor\Views\Tarefas\Create.cshtml.g.cs
-C:\Users\WIN10\Desktop\kanban\Projeto-Kanban\obj\Debug\net5.0\Razor\Views\Tarefas\Delete.cshtml.g.cs
-C:\Users\WIN10\Desktop\kanban\Projeto-Kanban\obj\Debug\net5.0\Razor\Views\Tarefas\Details.cshtml.g.cs
-C:\Users\WIN10\Desktop\kanban\Projeto-Kanban\obj\Debug\net5.0\Razor\Views\Tarefas\Edit.cshtml.g.cs
-C:\Users\WIN10\Desktop\kanban\Projeto-Kanban\obj\Debug\net5.0\Razor\Views\Tarefas\Index.cshtml.g.cs
 C:\Users\WIN10\Desktop\kanban\Projeto-Kanban\obj\Debug\net5.0\Razor\Views\_ViewImports.cshtml.g.cs
 C:\Users\WIN10\Desktop\kanban\Projeto-Kanban\obj\Debug\net5.0\Razor\Views\_ViewStart.cshtml.g.cs
 C:\Users\WIN10\Desktop\kanban\Projeto-Kanban\obj\Debug\net5.0\Razor\Details.cshtml.g.cs
@@ -654,3 +649,8 @@ C:\Users\WIN10\Desktop\kanban\Projeto-Kanban\obj\Debug\net5.0\ref\ProjetoKanban.
 C:\Users\WIN10\Desktop\kanban\Projeto-Kanban\obj\Debug\net5.0\ProjetoKanban.pdb
 C:\Users\WIN10\Desktop\kanban\Projeto-Kanban\obj\Debug\net5.0\ProjetoKanban.genruntimeconfig.cache
 C:\Users\WIN10\Desktop\kanban\Projeto-Kanban\obj\Debug\net5.0\Razor\Views\Pessoas\EditConta.cshtml.g.cs
+C:\Users\WIN10\Desktop\kanban\Projeto-Kanban\obj\Debug\net5.0\Razor\Views\Tarefas\Create.cshtml.g.cs
+C:\Users\WIN10\Desktop\kanban\Projeto-Kanban\obj\Debug\net5.0\Razor\Views\Tarefas\Delete.cshtml.g.cs
+C:\Users\WIN10\Desktop\kanban\Projeto-Kanban\obj\Debug\net5.0\Razor\Views\Tarefas\Details.cshtml.g.cs
+C:\Users\WIN10\Desktop\kanban\Projeto-Kanban\obj\Debug\net5.0\Razor\Views\Tarefas\Edit.cshtml.g.cs
+C:\Users\WIN10\Desktop\kanban\Projeto-Kanban\obj\Debug\net5.0\Razor\Views\Tarefas\Index.cshtml.g.cs

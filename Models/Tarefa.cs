@@ -24,5 +24,7 @@ namespace ProjetoKanban.Models
         public virtual Lista Lista { get; set; }
 
         public virtual ICollection<Pessoa> Pessoas { get; set; }
+
+        public string Chave { get; set; }
     }
 }
