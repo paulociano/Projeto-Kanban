@@ -26,21 +26,21 @@ namespace ProjetoKanban.Controllers
         }
 
         // GET: Tarefas/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(string codigoTarefa)
         {
-            if (id == null)
+            if (codigoTarefa == null)
             {
                 return NotFound();
             }
 
             var tarefa = await _context.Tarefas
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.Chave == codigoTarefa);
             if (tarefa == null)
             {
                 return NotFound();
             }
 
-            return View(tarefa);
+            return StatusCode(200);
         }
 
         // POST: Tarefas/Create

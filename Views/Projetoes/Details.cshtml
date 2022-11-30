@@ -22,15 +22,18 @@
             <div class="modal-overlay" id="overlay">
                 <div class="modal" id="modal">
                     <div class="modal-header">
-                        
+                        <input class="nometarefaModal" />
                     </div>
                     <div class="modal-content">
                         <div class="modalDescricaoEditar">
                             <label>Descrição</label>
                             <button class="buttonSaveModal"><font color=white><i class="bi bi-pencil-fill"></i> Editar </font></button>
-                            <button class="buttonSaveModal"><font color=white><i class="bi bi-cloud-arrow-up-fill"></i> Salvar </font></button>
                         </div>
-                        <input class="descricaoTarefaModal" />
+                        <textarea class="descricaoTarefaModal"></textarea>
+                        <label>Status</label>
+                        <input class="statusTarefaModal" />
+                        <hr>
+                        <h4>Comentários</h4>
                     </div>
                 </div>
             </div>
@@ -77,6 +80,34 @@
 <div id="root"></div>
 <script src="~/js/JavaScript.js"></script>
 <script>
+
+    /*Adicionar Nova Tarefa*/
+    function addTarefa() {
+
+        var chaveInt = Date.now();
+        var chave = chaveInt.toString();
+        
+        var tarefaNome = document.getElementById("tarefaText").value;
+        var backlog = document.getElementById("backlog");
+        backlog.innerHTML +=
+            "<div class='tarefa' draggable='true' onclick='abrirModal("+chave+")'>" + tarefaNome + "</div>";
+        document.getElementById("tarefaText").value = "";
+        var ultimaTarefa = backlog.lastElementChild;
+
+        ultimaTarefa.id = chave;
+
+        $.ajax({
+            method: "POST",
+            url: "/Tarefas/Create",
+            data: { nome: tarefaNome, codigodate: chave, },
+            success: (e) => {
+                alert('Tarefa criada com sucesso!')
+            },
+            error: (e) => {
+                alert('Não foi possível criar a tarefa!')
+            }
+        });
+    }
 
     /*Salvar alterações de estado do quadro*/
     function salvarAlteracoes() {
