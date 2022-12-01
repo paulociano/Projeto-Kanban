@@ -23,6 +23,11 @@ namespace ProjetoKanban.Controllers
             return View();
         }
 
+        public IActionResult Cadastro()
+        {
+            return View();
+        }
+
         [HttpPost]
         public IActionResult Logar(Pessoa pessoasModel)
         {
