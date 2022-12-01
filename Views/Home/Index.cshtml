@@ -8,7 +8,7 @@
 <header>
     <img src="~/imagens/aissa-branco.svg" class="logo">
     <button class="headerbutton">&#9776</button>
-    <ul>
+    <ul class="menusuperior">
         <li><a class="pagina" asp-controller="Projetoes" asp-action="Index"><i class="bi bi-folder-fill"></i>PROJETOS</a></li>
         <li><a class="pagina" asp-controller="Home" asp-action="Perfil"><i class="bi bi-person-fill"></i>PERFIL</a></li>
         <li><a class="pagina" asp-controller="Pessoas" asp-action="EditConta" asp-route-id="@HttpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado")"><i class="bi bi-gear-fill"></i>CONTA</a></li>
@@ -21,5 +21,3 @@
 </div>
 
 <div id="root"></div>
-<script src="js/script.js"></script>
-<script src="js/bootstrap.bundle.min.js"></script>
