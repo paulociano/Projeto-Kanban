@@ -1,37 +1,35 @@
-﻿@model ProjetoKanban.Models.Pessoa
-@{
-    Layout = null;
-}
-
+@model ProjetoKanban.Models.Pessoa
+@{ Layout = null; }
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="~/css/StyleSheet.css" rel="stylesheet" />
-    <title>LOGIN - AISSA TECNOLOGIA</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b1220" />
+    <title>Entrar - Aissa Kanban</title>
+    <link href="~/css/StyleSheet.css" rel="stylesheet" asp-append-version="true" />
 </head>
-<body>
-    <div class="main-login">
-        <div class="left-login">
-            <form asp-controller="Login" asp-action="Logar" method="post" class="card-login">
-                <h1>LOGIN</h1>
-                <div class="textfield">
-                    <label asp-for="Email">Usuário</label>
-                    <input asp-for="Email" type="text" placeholder="Usuário">
-                    <div style="color: red">@Html.ValidationMessageFor(x => x.Email)</div>
-                </div>
-                <div class="textfield">
-                    <label asp-for="Senha" for="senha">Senha</label>
-                    <input asp-for="Senha" type="password" name="senha" placeholder="Senha">
-                    <div style="color: red">@Html.ValidationMessageFor(x => x.Senha)</div>
-                </div>
-                <button type="submit" class="btn-login">Entrar</button>
+<body class="login-page">
+    <main class="login-shell">
+        <section class="login-brand">
+            <img src="~/imagens/aissa-branco.svg" alt="Aissa Tecnologia" />
+            <div>
+                <span class="eyebrow">AISSA KANBAN</span>
+                <h1>Trabalho visível.<br />Prioridades claras.</h1>
+                <p>Um workspace simples para transformar tarefas soltas em fluxo de entrega.</p>
+            </div>
+            <div class="login-preview" aria-hidden="true"><span></span><span></span><span></span></div>
+        </section>
+        <section class="login-form-wrap">
+            <form asp-controller="Login" asp-action="Logar" method="post" class="login-card">
+                <div class="login-heading"><span class="eyebrow">BEM-VINDO</span><h2>Entre no workspace</h2><p>Use suas credenciais para continuar.</p></div>
+                @if (ViewBag.ErrorLogin != null) { <div class="form-alert">@ViewBag.ErrorLogin</div> }
+                <label class="field"><span>E-mail</span><input asp-for="Email" type="email" autocomplete="username" placeholder="voce@empresa.com" /><small asp-validation-for="Email"></small></label>
+                <label class="field"><span>Senha</span><input asp-for="Senha" type="password" autocomplete="current-password" placeholder="Sua senha" /><small asp-validation-for="Senha"></small></label>
+                <button type="submit" class="btn-login">Entrar <span>→</span></button>
+                <div class="demo-hint"><strong>Demo</strong><span>demo@kanban.local</span><span>demo123</span></div>
             </form>
-        </div>
-        <div class="right-login">
-            <img src="~/imagens/logo-aissa.png"  class="right-login-image" alt="Logo da empresa Aissa Tecnologia composto por uma letra A estilizada em azul e verde escuro, envolta por um hexágono como fundo branco e borda azul escura. Na parte inferior, está escrito Aissa Tecnologia em letras azuis.">
-        </div>
-    </div>
+        </section>
+    </main>
 </body>
 </html>

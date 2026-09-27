@@ -5,8 +5,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using ProjetoKanban.Dados;
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Diagnostics;
 using System.Threading.Tasks;
 
 namespace ProjetoKanban
@@ -17,8 +16,26 @@ namespace ProjetoKanban
         {
             var host = CreateHostBuilder(args).Build();
             CreatDbIfNotExists(host);
-            host.Run();
 
+            var demoMode = host.Services.GetRequiredService<IConfiguration>().GetValue<bool>("DemoMode");
+            if (demoMode)
+            {
+                Task.Run(async () =>
+                {
+                    await Task.Delay(1500);
+                    try
+                    {
+                        Process.Start(new ProcessStartInfo
+                        {
+                            FileName = "http://localhost:5050",
+                            UseShellExecute = true
+                        });
+                    }
+                    catch { }
+                });
+            }
+
+            host.Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -26,19 +43,21 @@ namespace ProjetoKanban
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                    webBuilder.UseUrls("http://localhost:5050");
                 });
 
         public static void CreatDbIfNotExists(IHost host)
         {
-            using(var scope = host.Services.CreateScope())
+            using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
                 try
                 {
                     var context = services.GetRequiredService<Context>();
                     DbInitialize.Initialize(context);
-                }catch(Exception ex)
-                { 
+                }
+                catch (Exception ex)
+                {
                     var logger = services.GetRequiredService<ILogger<Program>>();
                     logger.LogError(ex, "Um erro ocorreu ao tentar criar o banco de dados");
                 }

@@ -1,0 +1,40 @@
+name: Build Demo Windows
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - demo-portatil
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 5
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '5.0.x'
+
+      - name: Restore
+        run: dotnet restore ProjetoKanban.csproj -r win-x64
+
+      - name: Publish Windows x64
+        run: >
+          dotnet publish ProjetoKanban.csproj
+          -c Release
+          -r win-x64
+          --self-contained true
+          --no-restore
+          -o publish
+
+      - name: Upload executavel
+        uses: actions/upload-artifact@v4
+        with:
+          name: ProjetoKanban-Demo-Windows-x64
+          path: publish/
+          if-no-files-found: error
+          retention-days: 30
