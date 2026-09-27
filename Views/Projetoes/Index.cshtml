@@ -1,32 +1,26 @@
-﻿@model IEnumerable<ProjetoKanban.Models.Projeto>
-
-@{
-    ViewData["Title"] = "Projetos - Aissa Tecnologia";
-}
-<header>
-    <img src="~/imagens/aissa-branco.svg" class="logo">
-    <h4 class="cabecalhoIndexProj">Projetos</h4>
-    <div class="linksProjeto">
-        <ul>
-            <li><a asp-action="Create"><font color=white><i class="bi bi-plus-circle-fill"></i> Criar Novo Projeto</font></a></li>
-            <a asp-controller="Home" asp-action="Index"><font color=white><i class="bi bi-arrow-return-left"></i> Voltar</font></a>
-        </ul>
-    </div>
+@model IEnumerable<ProjetoKanban.Models.Projeto>
+@{ ViewData["Title"] = "Projetos"; }
+<header class="app-header">
+  <a class="brand" asp-controller="Home" asp-action="Index"><img src="~/imagens/aissa-branco.svg" alt="Aissa" /></a>
+  <div class="page-head"><span class="eyebrow">WORKSPACE</span><strong>Projetos</strong></div>
+  <a class="header-link" asp-controller="Home" asp-action="Index"><i class="bi bi-arrow-left"></i> Início</a>
 </header>
-<div class="listaProjetos flex-container">
-    @foreach (var item in Model)
-    {
-        <div class="cardProject">
-            <div class="dadosCardP">
-                <div><h6>Projeto: @Html.DisplayFor(model => item.Nome)</h6></div>
-                <div class="opcoesProject">
-                    <ul>
-                        <li><a asp-action="Edit" asp-route-id="@item.Id" alt="Editar"><font color=#d65cb1><i class="bi bi-pencil-square"></i>Editar</font></a></li>
-                        <li><a asp-action="Details" asp-route-id="@item.Id" alt="Detalhes"><font color=#ff6f91><i class="bi bi-kanban-fill"></i>Detalhes</font></a></li>
-                        <li><a asp-action="Delete" asp-route-id="@item.Id" alt="Remover"><font color=#ffc75f><i class="bi bi-x-circle-fill"></i>Remover</font></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    }
-</div>
+<main class="app-shell">
+  <section class="section-heading">
+    <div><span class="eyebrow">SEUS QUADROS</span><h1>Projetos</h1><p>Abra um quadro existente ou comece um novo fluxo de trabalho.</p></div>
+    <a class="btn-primary-app" asp-action="Create"><i class="bi bi-plus-lg"></i> Novo projeto</a>
+  </section>
+  @if (!Model.Any()) {
+    <section class="empty-state"><i class="bi bi-kanban"></i><h2>Nenhum projeto ainda</h2><p>Crie seu primeiro quadro e transforme as próximas tarefas em um fluxo visual.</p><a class="btn-primary-app" asp-action="Create">Criar projeto</a></section>
+  } else {
+    <section class="project-grid">
+      @foreach (var item in Model) {
+        <article class="project-card">
+          <div class="project-card-top"><span class="project-dot"></span><span>QUADRO</span><a asp-action="Edit" asp-route-id="@item.Id" aria-label="Editar @item.Nome"><i class="bi bi-pencil"></i></a></div>
+          <div class="project-card-body"><h2>@item.Nome</h2><p>Organize tarefas do backlog até a conclusão.</p></div>
+          <div class="project-card-footer"><a class="open-board" asp-action="Details" asp-route-id="@item.Id">Abrir quadro <i class="bi bi-arrow-right"></i></a><a class="danger-link" asp-action="Delete" asp-route-id="@item.Id" aria-label="Excluir @item.Nome"><i class="bi bi-trash3"></i></a></div>
+        </article>
+      }
+    </section>
+  }
+</main>
