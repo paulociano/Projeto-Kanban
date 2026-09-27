@@ -1,23 +1,39 @@
-﻿@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Http
 @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
-
 @{
-    ViewData["Title"] = "Aissa Tecnologia - Projetos";
+    ViewData["Title"] = "Visão geral";
+    var nome = HttpContextAccessor.HttpContext?.Session.GetString("NomeUsuarioLogado") ?? "Usuário";
+    var primeiroNome = nome.Split(' ')[0];
 }
-
-<header>
-    <img src="~/imagens/aissa-branco.svg" class="logo">
-    <button class="headerbutton">&#9776</button>
-    <ul class="menusuperior">
-        <li><a class="pagina" asp-controller="Projetoes" asp-action="Index"><i class="bi bi-folder-fill"></i>PROJETOS</a></li>
-        <li><a class="pagina" asp-controller="Home" asp-action="Perfil"><i class="bi bi-person-fill"></i>PERFIL</a></li>
-        <li><a class="pagina" asp-controller="Pessoas" asp-action="EditConta" asp-route-id="@HttpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado")"><i class="bi bi-gear-fill"></i>CONTA</a></li>
-        <li><a class="pagina" asp-controller="Login" asp-action="Logout"><i class="bi bi-door-open-fill"></i>SAIR</a></li>
-    </ul>
-
+<header class="app-header">
+    <a class="brand" asp-controller="Home" asp-action="Index"><img src="~/imagens/aissa-branco.svg" alt="Aissa" /></a>
+    <nav class="app-nav" aria-label="Navegação principal">
+        <a asp-controller="Projetoes" asp-action="Index"><i class="bi bi-kanban"></i> Projetos</a>
+        <a asp-controller="Home" asp-action="Perfil"><i class="bi bi-person"></i> Perfil</a>
+        <a asp-controller="Pessoas" asp-action="EditConta" asp-route-id="@HttpContextAccessor.HttpContext?.Session.GetString("IdUsuarioLogado")"><i class="bi bi-gear"></i> Conta</a>
+        <a asp-controller="Login" asp-action="Logout"><i class="bi bi-box-arrow-right"></i> Sair</a>
+    </nav>
 </header>
-<div class="homecontainer">
-
-</div>
-
-<div id="root"></div>
+<main class="app-shell">
+    <section class="hero-panel">
+        <div>
+            <span class="eyebrow">WORKSPACE</span>
+            <h1>Olá, @primeiroNome.</h1>
+            <p>Transforme trabalho em fluxo. Organize projetos, mova tarefas pelo quadro e mantenha o foco no que precisa avançar.</p>
+            <div class="hero-actions">
+                <a class="btn-primary-app" asp-controller="Projetoes" asp-action="Index"><i class="bi bi-grid-1x2"></i> Abrir projetos</a>
+                <a class="btn-secondary-app" asp-controller="Projetoes" asp-action="Create"><i class="bi bi-plus-lg"></i> Novo projeto</a>
+            </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+            <div class="mini-column"><span>Backlog</span><b></b><b></b><b></b></div>
+            <div class="mini-column active"><span>Em andamento</span><b></b><b></b></div>
+            <div class="mini-column"><span>Concluído</span><b></b></div>
+        </div>
+    </section>
+    <section class="quick-grid">
+        <a class="quick-card" asp-controller="Projetoes" asp-action="Index"><i class="bi bi-kanban-fill"></i><div><strong>Quadros</strong><span>Visualize e organize seus projetos</span></div><i class="bi bi-arrow-up-right"></i></a>
+        <a class="quick-card" asp-controller="Home" asp-action="Perfil"><i class="bi bi-person-badge"></i><div><strong>Seu perfil</strong><span>Revise suas informações pessoais</span></div><i class="bi bi-arrow-up-right"></i></a>
+        <a class="quick-card" asp-controller="Pessoas" asp-action="EditConta" asp-route-id="@HttpContextAccessor.HttpContext?.Session.GetString("IdUsuarioLogado")"><i class="bi bi-sliders"></i><div><strong>Configurações</strong><span>Ajuste os dados da sua conta</span></div><i class="bi bi-arrow-up-right"></i></a>
+    </section>
+</main>
