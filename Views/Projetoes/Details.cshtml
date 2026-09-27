@@ -1,176 +1,37 @@
-﻿@model ProjetoKanban.Models.Projeto
-
-@{
-    ViewData["Title"] = "Details";
-}
-
-<header>
-    <img src="~/imagens/aissa-branco.svg" class="logo">
-    <h4 class="cabecalhoProjeto">Projeto @Html.DisplayFor(model => model.Nome)</h4>
-    <div class="linksProjeto">
-        <a asp-action="Edit" asp-route-id="@Model.Id"><font color=white><i class="bi bi-pencil-fill"></i>Editar</font></a> |
-        <a asp-action="Index"><font color=white><i class="bi bi-arrow-return-left"></i>Voltar</font></a>
-    </div>
-
+@model ProjetoKanban.Models.Projeto
+@{ ViewData["Title"] = Model.Nome; }
+<header class="app-header">
+  <a class="brand" asp-controller="Home" asp-action="Index"><img src="~/imagens/aissa-branco.svg" alt="Aissa" /></a>
+  <div class="page-head"><span class="eyebrow">PROJETO</span><strong>@Model.Nome</strong></div>
+  <div class="header-actions"><a class="header-link" asp-action="Edit" asp-route-id="@Model.Id"><i class="bi bi-pencil"></i> Editar</a><a class="header-link" asp-action="Index"><i class="bi bi-arrow-left"></i> Projetos</a></div>
 </header>
-<div class="container">
-    <main role="main" class="pb-3">
-        <section>
-
-            @*Modal*@
-            <div class="modal-overlay" id="overlay">
-                <div class="modal" id="modal">
-                    <div class="modal-header">
-                        <input class="nometarefaModal" />
-                    </div>
-                    <div class="modal-content">
-                        <div class="modalDescricaoEditar">
-                            <label>Descrição</label>
-                            <button class="buttonSaveModal"><font color=white><i class="bi bi-pencil-fill"></i> Editar </font></button>
-                        </div>
-                        <textarea class="descricaoTarefaModal"></textarea>
-                        <label>Status</label>
-                        <input class="statusTarefaModal" />
-                        <hr>
-                        <h4>Comentários</h4>
-                    </div>
-                </div>
-            </div>
-
-            @*Barra de Tarefas*@
-            <div class="nova-tarefa-container">
-                <input type="text" maxlength="20" id="tarefaText" placeholder="Nova Tarefa.." onkeydown="if (event.keyCode == 13) document.getElementById('add').click()"/>
-                <button id="add" class="button add-button" onclick="addTarefa()">Adicionar</button> |
-                <button id="salvarEstadoProjeto" class="buttonSalvarKanban" onclick="salvarAlteracoes()"><font color=white><i class="bi bi-cloud-arrow-up-fill"></i>Salvar</font></button>
-               
-            </div>
-
-            @*Quadro Kanban*@
-            <div class="projeto row">
-
-                <div class="kanban">
-                    <h5>Backlog</h5>
-                    <h5>Design</h5>
-                    <h5>Desenvolvimento</h5>
-                    <h5>Testes</h5>
-                    <h5>Implantação</h5>
-                    <h5>Conclusão</h5>
-                </div>
-                <div id="tarefasProjeto" class="kanban">
-                    <div id="backlog" class="coluna">
-                    </div>
-                    <div id="design" class="coluna">
-                    </div>
-                    <div id="desenvolvimento" class="coluna">
-                    </div>
-                    <div id="testes" class="coluna">
-                    </div>
-                    <div id="implantacao" class="coluna">
-                    </div>
-                    <div id="conclusao" class="coluna">
-                        <button class="button del-button" onclick="limparConclusao()"><i class="bi bi-trash3-fill"></i></button>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-</div>
-
-<div id="root"></div>
-<script src="~/js/JavaScript.js"></script>
+<main class="board-shell">
+  <section class="board-toolbar">
+    <div class="new-task"><i class="bi bi-plus-circle"></i><input type="text" maxlength="60" id="tarefaText" placeholder="Adicionar uma tarefa..." aria-label="Nome da nova tarefa" /><button id="add" class="btn-primary-app" onclick="addTarefa()">Adicionar</button></div>
+    <button id="salvarEstadoProjeto" class="btn-secondary-app" onclick="salvarAlteracoes()"><i class="bi bi-cloud-check"></i> Salvar quadro</button>
+  </section>
+  <section class="board-scroll" aria-label="Quadro Kanban">
+    <div id="tarefasProjeto" class="kanban-board">
+      <div class="board-column" data-tone="slate"><header><span>Backlog</span><b>01</b></header><div id="backlog" class="coluna"></div></div>
+      <div class="board-column" data-tone="violet"><header><span>Design</span><b>02</b></header><div id="design" class="coluna"></div></div>
+      <div class="board-column" data-tone="blue"><header><span>Desenvolvimento</span><b>03</b></header><div id="desenvolvimento" class="coluna"></div></div>
+      <div class="board-column" data-tone="amber"><header><span>Testes</span><b>04</b></header><div id="testes" class="coluna"></div></div>
+      <div class="board-column" data-tone="cyan"><header><span>Implantação</span><b>05</b></header><div id="implantacao" class="coluna"></div></div>
+      <div class="board-column" data-tone="green"><header><span>Conclusão</span><b>06</b><button class="icon-button" onclick="limparConclusao()" title="Limpar concluídas"><i class="bi bi-trash3"></i></button></header><div id="conclusao" class="coluna"></div></div>
+    </div>
+  </section>
+</main>
+<div class="modal-overlay" id="overlay"><div class="task-modal" id="modal"><div class="modal-header"><input class="nometarefaModal" aria-label="Nome da tarefa" /><button class="icon-button" onclick="fecharModal()" aria-label="Fechar">×</button></div><div class="modal-content"><label>Descrição</label><textarea class="descricaoTarefaModal" placeholder="Adicione contexto, critérios ou observações..."></textarea><label>Status</label><input class="statusTarefaModal" /><hr /><h4>Comentários</h4><p class="muted">Área preparada para evolução dos comentários.</p></div></div></div>
 <script>
-
-    /*Adicionar Nova Tarefa*/
-    function addTarefa() {
-
-        var chaveInt = Date.now();
-        var chave = chaveInt.toString();
-        
-        var tarefaNome = document.getElementById("tarefaText").value;
-        var backlog = document.getElementById("backlog");
-        backlog.innerHTML +=
-            "<div class='tarefa' draggable='true' onclick='abrirModal("+chave+")'>" + tarefaNome + "</div>";
-        document.getElementById("tarefaText").value = "";
-        var ultimaTarefa = backlog.lastElementChild;
-
-        ultimaTarefa.id = chave;
-
-        $.ajax({
-            method: "POST",
-            url: "/Tarefas/Create",
-            data: { nome: tarefaNome, codigodate: chave, },
-            success: (e) => {
-                alert('Tarefa criada com sucesso!')
-            },
-            error: (e) => {
-                alert('Não foi possível criar a tarefa!')
-            }
-        });
-    }
-
-    /*Salvar alterações de estado do quadro*/
-    function salvarAlteracoes() {
-
-        var projetoHtml = document.getElementById("tarefasProjeto").innerHTML;
-        var projetoId = "@Html.DisplayFor(model => model.Id)";
-
-        $.ajax({
-            method: "POST",
-            url: "/Projetoes/EditState",
-            data: { conteudo: projetoHtml, id:projetoId },
-            success: (e) => {
-                alert('As alterações foram salvas com sucesso!')
-            },
-            error: (e) => {
-                alert('Não foi possível salvar as alterações!')
-            }
-        });
-    }
-
-    /*Carregar primeiro ou último estado do quadro que foi salvo*/
-    window.onload = function carregarEstado() {
-        var stateOne = "@Html.DisplayFor(model => model.StateConteudo)".replace(/&#xA;/g, "");
-        var stateTwo = stateOne.replace(/&lt;/g, "<");
-        var stateThree = stateTwo.replace(/&gt;/g, ">");
-        var stateFour = stateThree.replace(/&quot;/g, "'");
-        if (stateFour !== "") {
-            document.getElementById("tarefasProjeto").innerHTML = stateFour;
-        }
-
-        /*Arrastar e Soltar Tarefas no Kanban*/
-        const colunas2 = document.querySelectorAll(".coluna");
-
-        document.addEventListener("dragstart", (e) => {
-            e.target.classList.add("dragging");
-        });
-
-        document.addEventListener("dragend", (e) => {
-            e.target.classList.remove("dragging");
-        });
-
-        colunas2.forEach((tarefa) => {
-            tarefa.addEventListener("dragover", (e) => {
-                const dragging = document.querySelector(".dragging");
-                const applyAfter = getNewPosition(tarefa, e.clientY);
-
-                if (applyAfter) {
-                    applyAfter.insertAdjacentElement("afterend", dragging);
-                } else {
-                    tarefa.prepend(dragging);
-                }
-            });
-        });
-
-        function getNewPosition(coluna, posY) {
-            const cards = coluna.querySelectorAll(".tarefa:not(.dragging)");
-            let result;
-            for (let refer_card of cards) {
-                const box = refer_card.getBoundingClientRect();
-                const boxCenterY = box.y + box.height / 2;
-                if (posY >= boxCenterY) result = refer_card;
-            }
-            return result;
-        }
-    }
-
+const projectId=@Model.Id;
+const savedState=@Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.StateConteudo ?? ""));
+document.getElementById("tarefaText").addEventListener("keydown",e=>{if(e.key==="Enter") addTarefa();});
+function addTarefa(){
+ const input=document.getElementById("tarefaText"), nome=input.value.trim(); if(!nome){showToast("Digite um nome para a tarefa.");return;}
+ const chave=Date.now().toString(), card=document.createElement("button"); card.type="button"; card.className="tarefa"; card.draggable=true; card.id=chave; card.textContent=nome; card.onclick=()=>abrirModal(chave);
+ document.getElementById("backlog").appendChild(card); input.value="";
+ $.post("/Tarefas/Create",{nome:nome,codigodate:chave}).done(()=>showToast("Tarefa criada.")).fail(()=>{card.remove();showToast("Não foi possível criar a tarefa.");});
+}
+function salvarAlteracoes(){ $.post("/Projetoes/EditState",{conteudo:document.getElementById("tarefasProjeto").innerHTML,id:projectId}).done(()=>showToast("Quadro salvo.")).fail(()=>showToast("Não foi possível salvar o quadro.")); }
+window.addEventListener("load",()=>{if(savedState){document.getElementById("tarefasProjeto").innerHTML=savedState;} initDragAndDrop();});
 </script>
